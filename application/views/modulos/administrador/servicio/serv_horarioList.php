@@ -25,7 +25,7 @@
             <div class="page-title">
               <div class="title_left">
 
-              <h3>Lista de horarios de <?php echo isset($nombre_) ? $nombre_ : $nombre_info; ?> <small></small></h3>
+              
 
               <!--<h3>Lista de horarios de <?php echo $row->nombre;?>  <small></small></h3>-->
 
@@ -38,13 +38,14 @@
               <div class="col-md-12 col-sm-12 ">
                 <div class="x_panel">
                   <br>
+                  <h3>Lista de horarios de <?php echo  $nombre_ ?> <small></small></h3>
                   <div class="x_content">
                       <div class="row">
                           <div class="col-sm-12">
                           <?php
                             echo form_open_multipart('servicio/horario');
                             ?>
-                            <input type="hidden" name="id" value="<?php echo isset($id_) ? $id_ : $id_info; ?>" >
+                            <input type="hidden" name="id" value="<?php echo  $id_  ?>" >
 
                             <button type="submit" class="btn btn-small btn-success"><i class="fa fa-pencil">Agregar Horario</i></button>
                             
@@ -53,10 +54,8 @@
     ?>
                             <div class="d-flex justify-content-end">
                               
-                              <input type="hidden" name="id" value="<?php echo isset($id_) ? $id_ : $id_info; ?>">
-                              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#miModal">
-                                Agrupar
-                              </button>
+                              
+                              
                               <?php echo form_close(); ?>
                           </div>
                           <!-------- modal ------------>
@@ -68,12 +67,12 @@
                       <thead>
                         <tr>
                           <th>No</th>
-                          <th>Dia</th>
-                          <th>Horario</th>
+                          <th>DIA</th>
+                          <th>HORARIO</th>
                           
-                          <th>Grupo</th>
-                          <th>Instructor</th>
-                          <th ></th>
+                          <th>GRUPO</th>
+                          <th>INSTRUCTOR</th>
+                          
                           <th ></th>
                           <th ></th>
                         </tr>
@@ -108,19 +107,7 @@ foreach ($infoservicio as $row) {
                           <td><?php echo $instructor_info->nombres . ' ' . $instructor_info->primerApellido; ?></td>
 
 
-                          <td>
-                          <?php
-                            echo form_open_multipart('servicio/asignar');
-                            ?>
-                            <input type="hidden" name="id" value="<?php echo $servicio_info->id; ?>">
-                            <input type="hidden" name="idInstructor" value="<?php echo $instructor_info->id; ?>">
-                            <input type="hidden" name="idHorario" value="<?php echo $horario_info->id; ?>">
-                            <button type="submit" class="btn btn-small btn-success"><i class="fa fa-pencil"></i></button>
-
-                            <?php
-                            echo form_close();    
-                            ?>
-                        </td>
+                          
 
                           <td>
                           <?php

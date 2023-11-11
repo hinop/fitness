@@ -14,94 +14,119 @@ foreach($infoservicio->result() as $row){
                                 </div>
                                
                                 <div class="x_content">
-                                    <form class="" action="<?php echo base_url();?>index.php/servicio/asignarbd" method="post" novalidate>
-                                        
-                                        
-                                        <div class="row">
-                                            <div class="col-md-6 col-sm-6">
-                                                
-                                            <input type="hidden" name="idservicio" value="<?php echo $row->id;?>">
-<br>
-                                                <div class="form-group">
-                                                    <label for="nombre" class="form-label">Instructor: <span class="required">*</span></label>
-                                                    <input   class="form-control" autocomplete="off" id="search" name="instructor" type="text" required="required" />
-                                                    <!--<datalist id="instructor_results"  class="results-container">
-                                                        
-                                                    </datalist>-->
-                                                    <div id="instructor_results" class="results-container">
+
+                                <div class="container">
+    <form class="row g-3"  method="post" novalidate>
+        
+        <div class="col-md-6">
+            <!-- referencia de servicio --->
+        <input type="text" name="idservicio" value="<?php echo $row->id;?>">
+            <div class="mb-3">
+                <label for="campo1" class="form-label">INSTRUCTOR :</label>
+                <input   class="form-control" autocomplete="off" id="search" name="instructor" type="text" required="required" />
+                <div id="instructor_results" class="results-container">
                                                         <!-- La lista de resultados se mostrará aquí -->
-                                                    </div>
+                </div>
+            </div>
+        </div>
+        
 
-                                                </div>
-                                                <input type="hidden" name="idinstructor" >
+        <div class="col-md-6">
+            <!-- referencia de instructor --->
+        <input type="text" name="idinstructor" >
+            <div class="mb-3">
+                <label for="campo2" class="form-label">ESPECIALIDAD :</label>
+                <input type="text" class="form-control" name="especialidad" id="especialidad"  disabled/>
+            </div>
+        </div>
 
+        <!-- Segunda Fila -->
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label for="campo3" class="form-label">GRUPO :</label>
+                <input type="text" class="form-control" id="grupo"name="grupo" />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label for="campo4" class="form-label">DISPONIBILIDAD :</label>
+                <input type="text" class="form-control" id="disponibilidad" name="disponibilidad" />
+            </div>
+        </div>
 
-                                            <div class="col-md-6 col-sm-6">
-                                                
-                                            <div class="form-group">
-                                                <label for="diasSemana">Selecciona un día de la semana:</label>
-                                                <select class="custom-select" name="diasSemana" id="diasSemana">
-                                                    <option value="1">Lunes</option>
-                                                    <option value="2">Martes</option>
-                                                    <option value="3">Miércoles</option>
-                                                    <option value="4">Jueves</option>
-                                                    <option value="5">Viernes</option>
-                                                    <option value="6">Sábado</option>
-                                                    <option value="7">Domingo</option>
-                                                </select>
-                                            </div>
-                                                                                            
-                                                
-                                            </div>
-                                        </div>
+        
+        <!-- Tercera Fila -->
+        <div class="col-md-4">
+            <!-- refecncia horario -->
+        <input type="text"id="idHorario" name="idHorario">
+            <div class="mb-3">
+            <label for="diasSemana">DÍA :</label>
+                    <select class="custom-select" name="diasSemana" id="diasSemana">
+                    <option value="1">LUNES</option>
+                    <option value="2">MARTES</option>
+                    <option value="3">MIÉRCOLES</option>
+                    <option value="4">JUEVES</option>
+                    <option value="5">VIERNES</option>
+                    <option value="6">SÁBADO</option>
+                    <option value="7">DOMINGO</option>
+                    </select>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="mb-3">
+                
+                <label for="horariosDisponibles" class="form-label">HORARIOS DISPONIBLES :</label>
+                <select class="form-select" id="horariosDisponibles" name="idHorario">
+                    <!-- Los horarios disponibles se cargarán aquí mediante JavaScript -->
+                </select>
+            </div>
+        </div>
+        <!-- Botón Agregar -->
+        <div class="col-md-4">
+        <div class="mb-3">
+                <button type='button' id="agregarFila" class="btn btn-primary">Agregar</button>
+            </div>
+        </div>
 
-                                        <div class="row">
-                                            <div class="col-md-6 col-sm-6">
-                                                <div class="mb-3">
-                                                
-                                                    <!--<datalist id="instructor_results"  class="results-container">
-                                                        
-                                                    </datalist>-->
-                                                    <h5>horarios</h5>
-                                                    <div id="horariosDisponibles">
-                                                        <!-- La lista de resultados se mostrará aquí -->
-                                                    </div>
-                                                </div>
-                                                <input type="hidden"id="idHorario" name="idHorario">
-                                                        <!-- La lista de resultados se mostrará aquí -->
-                                                    </div>
-                                            
-                                                
-                                            </div>
-                                            
-                                        </div>
+       
+        
+    </form>
+    <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <br>
 
-                                        <div class="row">
-                                        <div class="field item form-group">
-                                            <label class="col-form-label col-md-3 col-sm-3  label-align">Grupo:<span></span></label>
-											<div class="col-md-6 col-sm-6">
-												<select class="form-control " name="grupo">
-													<option value="Mañana">Mañana</option>
-													<option value="Tarde">Tarde</option>
-                                                    <option value="Nocturno">Nocturno</option>
-												</select>
-											</div>
-                                        </div>
-                                            
-                                        </div>
-                                        
-                                        
+            <h5>Servicios</h5>
+            <hr>
 
+            <div class="table-responsive">
+                <table class="table table-hover table-bordered tabla-especifica" id="tabla">
+                    <thead>
+                        <tr>
+                            <th>idServicio</th>
+                            <th>idIntructor</th>
+                            <th>idHorario</th>
+                            <th>DÍA</th>
+                            <th>HORARIO</th>
+                            
+                            <th>Opción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Your table body content goes here -->
+                    </tbody>
+</table>
+</div>
+                    <div class="form-group">
+                <button id="guardarInscripcion" type="submit" class="btn btn-primary btn-flat btn-guardar" type="button">Guardar</button>
+               
+            </div>
+</form>
+        
 
-                                        <div class="ln_solid">
-                                            <div class="form-group">
-                                                <div class="col-md-6 offset-md-3">
-                                                    <button type='submit' class="btn btn-primary">Agregar</button>
-                                                    <button type='reset' class="btn btn-success">Limpiar</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
+                                    <
+                                    <br>
+                                    
                                 </div>
                                 <?php
 
@@ -139,9 +164,47 @@ foreach($infoservicio->result() as $row){
             
             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
             
-            
+            <script>
+        $(document).ready(function() {
+            $("#agregarFila").on("click", function() {
+                // Obtener valores de los elementos del formulario
+                var idservicio = $("input[name='idservicio']").val();
+                var idinstructor = $("input[name='idinstructor']").val();
+                var idHorario = $("#idHorario").val();
+                var diasSemana = $("#diasSemana option:selected").text();
+                var horariosDisponibles = $("#horariosDisponibles option:selected").text();
+
+                // Crear nueva fila en la tabla con los valores del formulario
+                var newRow = $("<tr>");
+                newRow.append("<td>" + idservicio + "</td>");
+                newRow.append("<td>" + idinstructor + "</td>");
+                newRow.append("<td>" + idHorario + "</td>");
+                newRow.append("<td>" + diasSemana + "</td>");
+                newRow.append("<td>" + horariosDisponibles + "</td>");
+                newRow.append("<td><button class='eliminarFila btn btn-danger'>Eliminar</button></td>");
+
+                // Agregar la nueva fila a la tabla
+                $("#tabla tbody").append(newRow);
+
+                // Limpiar valores del formulario
+                
+                
+                $("#idHorario").val("");
+                $("#diasSemana").val("");
+                $("#horariosDisponibles").val("");
+
+                // Deshabilitar los campos específicos
+                $("#search, #grupo, #disponibilidad").prop("disabled", true);
+            });
+
+            // Agregar la funcionalidad de eliminar fila
+            $("#tabla").on("click", ".eliminarFila", function() {
+                $(this).closest("tr").remove();
+            });
+        });
+    </script>      
 <script>
-   $(document).ready(function () {
+    $(document).ready(function () {
     var resultsContainer = $('#instructor_results');
     var selectedResult = false; // Variable para rastrear si se ha seleccionado un resultado
 
@@ -159,6 +222,10 @@ foreach($infoservicio->result() as $row){
         if (query === '') {
             resultsContainer.empty();
             resultsContainer.hide();
+
+            // Vaciar el valor del input 'especialidad'
+            $('#especialidad').val('');
+            
             return;
         }
 
@@ -188,6 +255,8 @@ foreach($infoservicio->result() as $row){
                                 $('#search').val(optionValue);
                                 $('input[name="idinstructor"]').val(value.id);
 
+                                // Actualizar el valor del input 'especialidad'
+                                $('#especialidad').val(value.especialidad);
 
                                 resultsContainer.empty();
                                 resultsContainer.hide();
@@ -221,89 +290,70 @@ foreach($infoservicio->result() as $row){
             }
         }, 100);
     });
+});
 
-
-
-
-
-
-    
-
-
-    });   
+ 
 </script>
 <script>
+    <!-- Asegúrate de que jQuery esté incluido -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
-$(document).ready(function() {
-    // Manejar el evento onchange del select
+<script>
+$(document).ready(function () {
+    // Evento cuando cambia el día
     $('#diasSemana').change(function() {
         var idDia = $(this).val();
-        
-        // Realizar una petición AJAX para cargar los horarios disponibles
+
+        // Realizar una solicitud AJAX para obtener los horarios disponibles
         $.ajax({
             url: "<?php echo base_url('index.php/horario/cargarHorarios'); ?>",
             type: 'POST',
             data: { idDia: idDia },
             dataType: 'json',
             success: function(data) {
-                // Limpiar el div de horarios disponibles
-                $('#horariosDisponibles').empty();
+                // Obtener el select de los horarios
+                var horariosSelect = $('#horariosDisponibles');
 
-                // Agregar los horarios disponibles al div
+                // Limpiar opciones anteriores
+                horariosSelect.empty();
+
+                // Agregar la opción "Seleccione un horario" al principio
+                horariosSelect.append('<option value="">Seleccione un horario</option>');
+
+                // Llenar el select con los horarios disponibles
                 $.each(data, function(index, horario) {
-                    // Crear un elemento <p> con un atributo data-id que almacena el ID del horario en la tabla
-                    var $p = $('<p>', {
-                        text: convertirHoraAMinutos(horario.horaInicio) + ' - ' + convertirHoraAMinutos(horario.horaFin),
-                        'data-id': horario.id // ID de la tabla
+                    var option = $('<option>', {
+                        value: horario.id,
+                        text: convertirHoraAMinutos(horario.horaInicio) + ' - ' + convertirHoraAMinutos(horario.horaFin)
                     });
+                    horariosSelect.append(option);
+                });
 
-                    // Agregar un evento click para manejar la selección
-                    $p.on('click', function() {
-                        // Obtener el ID de la tabla del atributo data-id
-                        var idHorario = $(this).data('id');
-
-                        // Actualizar el valor en el div "horariosDisponibles"
-                        $('#horariosDisponibles').text($(this).text());
-
-                        // Actualizar el valor en el input "idHorario"
-                        $('#idHorario').val(idHorario);
-                    });
-
-                    // Aplicar un estilo simple en línea
-                    $p.css({
-                        cursor: 'pointer',
-                        padding: '5px',
-                        border: '1px solid #ccc',
-                        margin: '5px',
-                        borderRadius: '5px',
-                        backgroundColor: '#f0f0f0'
-                    });
-
-                    $('#horariosDisponibles').append($p);
+                // Evento cuando cambia el horario
+                horariosSelect.change(function() {
+                    var selectedHorario = $(this).val();
+                    $('#idHorario').val(selectedHorario);
                 });
             }
         });
     });
-});
-function convertirHoraAMinutos(hora) {
-    // Dividir la cadena de hora en horas, minutos y segundos
-    var partes = hora.split(':');
 
-    if (partes.length === 3) {
-        var horas = parseInt(partes[0]);
-        var minutos = parseInt(partes[1]);
-
-        // Formatear la hora en "hora:minutos"
-        var horaMinutos = horas + ':' + (minutos < 10 ? '0' : '') + minutos;
-
-        return horaMinutos;
-    } else {
-        // Manejar un formato de hora incorrecto
-        return "Formato de hora incorrecto";
+    // Función para convertir la hora a minutos
+    function convertirHoraAMinutos(hora) {
+        var partes = hora.split(':');
+        if (partes.length === 3) {
+            var horas = parseInt(partes[0]);
+            var minutos = parseInt(partes[1]);
+            var horaMinutos = horas + ':' + (minutos < 10 ? '0' : '') + minutos;
+            return horaMinutos;
+        } else {
+            return "Formato de hora incorrecto";
+        }
     }
-}
+});
+</script>
 
-
-
+    
+   
 
 </script>

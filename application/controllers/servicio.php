@@ -14,7 +14,8 @@ class Servicio extends CI_Controller {
 		
         
 	}
-    /*referncia al agregar horarios al servicio*/
+
+    /*boton de referncia para ver los horarios de un servicio*/
     public function asignar()
     	{        
         $idS=0;
@@ -27,14 +28,14 @@ class Servicio extends CI_Controller {
             $idS=$idServ->id;
         }
         /*$datos = json_decode($this->uri->segment(3), true);*/
-        if (isset($datos) && $datos!== null ) {
+        /*if (isset($datos) && $datos!== null ) {
             $data['info'] = $datos;
             $info = $datos[0];
             $idS = $info['id'];       
             
-        }
+        }*/
         
-
+        /* realiza la consult devuel todos los horarios para ese servicio*/
         $lista=$this->servicio_model->listahoraservicio($idS);
 		$data['infoservicio']=$lista;
         

@@ -24,21 +24,15 @@
 
                                             <div class="col-md-6 col-sm-6">
                                                 <div class="form-group">
-                                                    <label for="seccion" class="form-label">Precio Sección:<span class="required">*</span></label>
-                                                    <input class="form-control" type="number" autocomplete="off" name="seccion" required='required' />
+                                                    <label for="mes" class="form-label">Precio Mensualidad:<span class="required">*</span></label>
+                                                    <input class="form-control" type="number" autocomplete="off" name="mes" required='required' />
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div class="row">
-                                            <div class="col-md-6 col-sm-6">
-                                                <div class="form-group">
-                                                    <label for="mes" class="form-label">Precio Mensualidad:<span class="required">*</span></label>
-                                                    <input class="form-control" type="number" autocomplete="off" name="mes" required='required' />
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-6 col-sm-6">
+                                            
+                                            <div class="col-md-9 col-sm-9">
                                                 <div class="form-group">
                                                     <label for="dispo" class="form-label">Descripción:<span class="required">*</span></label>
                                                     <input class="form-control" type="text" autocomplete="off" name="des" required='required' />
