@@ -30,7 +30,7 @@
                         <tr>
                           <th>No</th>
                           <th>Servicio</th>
-                          <th>precio seccion</th>
+                          
                           <th>precio mensual</th>
                           <th>Descripcion</th>
                           <th>Horario</th>
@@ -46,7 +46,7 @@ foreach($servicio->result() as $row){
                         <tr>
                           <td><?php echo $indice; ?></td>
                           <td><?php echo $row->nombre; ?></td>
-                          <td><?php echo $row->precioSeccion; ?></td>
+                          
                           <td><?php echo $row->precioMensual; ?></td>
                           <td><?php echo $row->descripcion; ?></td>
 

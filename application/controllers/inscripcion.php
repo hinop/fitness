@@ -116,52 +116,7 @@ class Inscripcion extends CI_Controller {
     header('Content-Type: application/json');
     echo json_encode($response);// Redirige a la URL deseada
 }
-/*public function nuevaInscripcion()
-    {
-        date_default_timezone_set('America/La_Paz');
-        $fecha_venta = date('Y-m-d ');
-        $idCliente = $this->input->post('idCliente');
-        $idUsuario = $this->session->userdata('id');
-        $detalles = $this->input->post('detalles');
-        
-        $total = $this->input->post('total');
 
-        // Iniciar la transacción
-        $this->db->trans_begin();
-
-        // Insertar en la tabla de venta
-        $ventaData = array(
-            'idCliente' => $idCliente,
-            'idUsuario' => $idUsuario,
-            'fecha_venta' => $fecha_venta,
-            'total' => $total
-        );
-        $this->inscripcion_model->insertarVenta($ventaData);
-
-        // Obtener el ID de la venta recién insertada
-        $idVenta = $this->db->insert_id();
-
-        
-
-        // Insertar los detalles de la venta
-        if (is_array($detalles)) {
-        foreach ($detalles as $detalle) {
-            $detalle['idVenta'] = $idVenta;
-            $this->inscripcion_model->insertarDetalle($detalle);
-        }
-        }
-        // Verificar el estado de la transacción
-        if ($this->db->trans_status() === FALSE) {
-            $this->db->trans_rollback();
-            echo 'Error en la transacción';
-        } else {
-            $this->db->trans_commit();
-            redirect('inscripcion/index', 'refresh');
-        }
-    
-        
-    
-}*/
 
     public function comprobante(){
         $this->load->library('pdf'); 

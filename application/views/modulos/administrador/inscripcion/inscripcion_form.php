@@ -999,7 +999,7 @@ $(document).ready(function () {
             },
             success: function (response) {
     if (response.status === 'success') {
-        alert('Transacción exitosa');
+        
         var idVenta = response.idVenta;
         var comprobanteUrl = "<?php echo base_url(); ?>index.php/inscripcion/comprobante?id=" + idVenta;
         window.open(comprobanteUrl, '_blank');

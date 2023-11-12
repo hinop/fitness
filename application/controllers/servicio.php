@@ -60,29 +60,44 @@ class Servicio extends CI_Controller {
 	}
     public function asignarbd()
 	{    
+        $id=$_POST['idservicio'];
+        if ($this->input->is_ajax_request()) {
+            $grupo = $this->input->post('grupo');
+            $disponibilidad = $this->input->post('disponibilidad');
+            $datosTabla = $this->input->post('datosTabla');
+    
+            // Inicia la transacción
+            $this->db->trans_start();
+    
+            // Inserta datos en la tabla horario_servicio
+            foreach ($datosTabla as $dato) {
+                $data = array(
+                    'idHorario' => $dato['idHorario'],
+                    'idServicio' => $dato['idServicio'],
+                    'idInstructor' => $dato['idInstructor'],
+                    'grupo' => $grupo,
+                    'disponibilidad' => $disponibilidad
+                );
+                $this->db->insert('horario_servicio', $data);
+            }
+    
+            // Completa la transacción
+            $this->db->trans_complete();
+    
+            if ($this->db->trans_status() === FALSE) {
+                // Si hay un error en la transacción, reviértela
+                $this->db->trans_rollback();
+                echo json_encode(array('status' => 'error', 'message' => 'Error en la transacción.'));
+            } else {
+                // Si la transacción fue exitosa, confírmala
+                $this->db->trans_commit();
+                echo json_encode(array('status' => 'success', 'id' => 'Transacción exitosa.'));
+            }
+        } else {
+            show_404(); // Manejar solicitudes no AJAX de acuerdo a tus necesidades
+        }
 
-        $data['idHorario']=$_POST['idHorario'];
-        $data['idServicio']=$_POST['idservicio'];
-        $idServicio=$_POST['idservicio'];
-        $data['idInstructor']=$_POST['idinstructor'];
-        $data['grupo']=$_POST['grupo'];
-        
-
-        $dato= $this->servicio_model->recuperarservicio($idServicio)->row();
-        var_dump($dato);
-        
-
-        
-
-        $dato = $this->servicio_model->recuperarservicio($idServicio)->result();
-        $encodedData = base64_encode(json_encode($dato));
-
-        $this->servicio_model->asignarhoraservicio($data);
-
-        redirect('servicio/asignar/' . urlencode($encodedData), 'refresh');
-  
-
-	}
+    }
     public function agrupar(){
         $id=$_POST['id'];
         $data['infoservicio']=$this->servicio_model->recuperarservicio($id);
